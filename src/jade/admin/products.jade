@@ -1,0 +1,28 @@
+h1(class="text-center") Products List
+div(class="container")
+  div(class='row')
+    div(class="col-xs-4 pull-right")
+      input(type="search", class="form-control", ng-model="searchTerm", placeholder="search")
+  br
+  table(class="table table-bordered")
+    thead
+      tr
+        th ID
+        th Name
+        th Price
+        th Description
+        th #
+    tbody
+      tr(ng-repeat="product in products")
+        td {{ product.id }}
+        td {{ product.name }}
+        td {{ product.price | currency }}
+        td {{ product.description }}
+        td: a(href="/#/admin/edit/{{product.id}}", class="btn btn-success") Edit
+        td: button(class="btn btn-danger") Delete
+
+  // ul(class="pager pull-right")
+  //   li(ng-class="{ disabled: pageSelected == 0 }")
+  //     a(ng-click="changePage(filteredProducts, -1)")  Previous
+  //   li(ng-class="{ disabled: (pageSelected + 1) == maxPage(filteredProducts) }")
+  //     a(ng-click="changePage(filteredProducts, 1)") Next

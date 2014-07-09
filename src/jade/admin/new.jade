@@ -1,0 +1,53 @@
+h1(class="text-center") Create Product
+
+form(
+  name="productForm",
+  class="form-horizontal",
+  role="form",
+  ng-submit="createProduct()"
+  novalidate)
+  div(class="form-group")
+    label(for="name", class="col-sm-2 control-label") Product Name
+    div(class="col-sm-10", ng-class="{ 'has-error' : productForm.productName.$invalid }")
+      input(
+        type="text",
+        class="form-control",
+        name="productName",
+        placeholder="Product's Name",
+        ng-model="name",
+        required)
+      small(
+        class="help-block",
+        ng-show="productForm.productName.$invalid && productForm.productName.$dirty").
+        Product name required
+
+  div(class="form-group")
+    label(for="price", class="col-sm-2 control-label") Price
+    div(class="col-sm-10", ng-class="{ 'has-error' : productForm.price.$invalid}")
+      input(
+        type="number",
+        class="form-control",
+        name="price",
+        placeholder="Product's Price",
+        ng-model="price",
+        required)
+      small(
+        class="help-block",
+        ng-show="productForm.price.$invalid && productForm.price.$dirty").
+        Product price required, should be a number
+
+  div(class="form-group")
+    label(for="name", class="col-sm-2 control-label") Description
+    div(class="col-sm-10")
+      input(
+        type="text",
+        class="form-control",
+        name="description",
+        placeholder="Description of the product"
+        ng-model="description")
+
+  div(class="form-group")
+    div(class="col-sm-offset-2 col-sm-10")
+      button(type="submit",
+        ng-disabled="productForm.$invalid",
+        class="btn btn-default") Create

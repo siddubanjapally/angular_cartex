@@ -1,0 +1,18 @@
+table(class="table table-bordered")
+  thead
+    tr
+      th Name
+      th Price
+      th Quantity
+      th Total
+      th
+  tbody
+    tr(ng-repeat="e in cart()")
+      td {{ e.product.name }}
+      td {{ e.product.price | currency }}
+      td
+        input(type="number", ng-model="e.quantity")
+      td {{ e.quantity * e.product.price }}
+      td
+        button(class="btn btn-danger", ng-click="remove(e.product)") Delete
+h2(class="pull-right") Total : {{ total() }}

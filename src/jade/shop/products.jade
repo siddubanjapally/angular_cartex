@@ -1,0 +1,28 @@
+h1(class="text-center") Products List
+div(class="container")
+  div(class='row')
+    div(class="col-xs-4 pull-right")
+      input(type="search", class="form-control", ng-model="searchTerm", placeholder="search")
+  br
+  table(class="table table-bordered")
+    thead
+      tr
+        th Name
+        th Price
+        th #
+    tbody
+      tr(ng-class="{ success: bought(product) }",
+        ng-repeat="product in filteredProducts = (products | filter:searchTerm) | paginate:pageSize:pageSelected")
+        td {{ product.name }}
+        td {{ product.price | currency }}
+        td: button(
+            class="btn btn-success",
+            ng-click="buy(product)",
+            ng-disabled="bought(product)"
+          ) BUY
+
+  ul(class="pager pull-right")
+    li(ng-class="{ disabled: pageSelected == 0 }")
+      a(ng-click="changePage(filteredProducts, -1)")  Previous
+    li(ng-class="{ disabled: (pageSelected + 1) == maxPage(filteredProducts) }")
+      a(ng-click="changePage(filteredProducts, 1)") Next

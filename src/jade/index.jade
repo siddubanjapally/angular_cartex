@@ -1,0 +1,12 @@
+doctype 5
+html
+  head
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel='stylesheet', href='lib.min.css', media='screen')
+
+  body(ng-app="seartipy")
+    ng-include(src="'nav.html'")
+    div(class="container")
+      ng-view
+    script(src="lib.min.js")
+    script(src="seartipy-web-seed.js")
